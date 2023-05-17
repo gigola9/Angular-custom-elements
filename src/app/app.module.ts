@@ -1,16 +1,26 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { ConvertComponent } from './convert/convert.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConvertComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ConvertComponent]
 })
-export class AppModule { }
+
+// install npm i @angular/elements
+export class AppModule {
+  constructor(private injector: Injector) {
+    const el = createCustomElement(ConvertComponent, {injector});
+    customElements.define('app-convert', el);
+  }
+}

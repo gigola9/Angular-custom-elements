@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="container__child">
+    <input type="text" [value]="gel" (input)="inputGel($event.target)">
+    <p>₾</p>
+  </div>
+  <div class="container__child green">
+    <input type="text" [value]="usd" (input)="inputUsd($event.target)">
+    <p>$</p>
+  </div>
+</div>
